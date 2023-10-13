@@ -1,0 +1,117 @@
+[{
+  "_id": {
+    "$oid": "6528afea2c9f4bc8b53c89c9"
+  },
+    "brand": "Toyota",
+    "model": "Camry",
+    "year": 2022,
+    "type": "car",
+    "color": "Silver",
+    "price": 25000
+},
+
+{
+  "_id": {
+    "$oid": "6528aff52c9f4bc8b53c89cb"
+  },
+    "brand": "Ford",
+    "model": "F-150",
+    "year": 2022,
+    "type": "truck",
+    "color": "Blue",
+    "price": 35000
+},
+{
+  "_id": {
+    "$oid": "6528b0152c9f4bc8b53c89cd"
+  },
+    "brand": "Honda",
+    "model": "Civic",
+    "year": 2021,
+    "type": "car",
+    "color": "Black",
+    "price": 20000
+
+
+},
+{
+  "_id": {
+    "$oid": "6528b0272c9f4bc8b53c89cf"
+  },
+    "brand": "Chevrolet",
+    "model": "Equinox",
+    "year": 2022,
+    "type": "suv",
+    "color": "Red",
+    "price": 28000
+  
+},
+{
+  "_id": {
+    "$oid": "6528b0372c9f4bc8b53c89d1"
+  },
+    "brand": "Nissan",
+    "model": "Altima",
+    "year": 2022,
+    "type": "car",
+    "color": "White",
+    "price": 24000
+},
+{
+  "_id": {
+    "$oid": "6528b0432c9f4bc8b53c89d3"
+  },
+    "brand": "Ford",
+    "model": "Explorer",
+    "year": 2022,
+    "type": "suv",
+    "color": "Gray",
+    "price": 32000
+},
+{
+  "_id": {
+    "$oid": "6528b0532c9f4bc8b53c89d5"
+  },
+    "brand": "Ram",
+    "model": "1500",
+    "year": 2022,
+    "type": "truck",
+    "color": "Black",
+    "price": 38000
+
+},
+{
+  "_id": {
+    "$oid": "6528b0622c9f4bc8b53c89d7"
+  },
+    "brand": "Hyundai",
+    "model": "Elantra",
+    "year": 2021,
+    "type": "car",
+    "color": "Blue",
+    "price": 21000
+
+},
+{
+  "_id": {
+    "$oid": "6528b06f2c9f4bc8b53c89d9"
+  },
+    "brand": "Jeep",
+    "model": "Cherokee",
+    "year": 2022,
+    "type": "suv",
+    "color": "Green",
+    "price": 29000
+
+},
+{
+  "_id": {
+    "$oid": "6528b07e2c9f4bc8b53c89db"
+  },
+    "brand": "Chevrolet",
+    "model": "Silverado",
+    "year": 2022,
+    "type": "truck",
+    "color": "Red",
+    "price": 36000
+}]
