@@ -2,13 +2,13 @@
   "swagger": "2.0",
   "info": {
     "title": "My API Roguin for Vehicles",
-    "description": "Contacts API",
+    "description": "Vehicles API",
     "version": "1.0.0"
   },
-  "host": "cse241-project.onrender.com",
+  "host": "localhost:8080",
   "basePath": "/",
   "schemes": [
-    "https"
+    "http"
   ],
   "paths": {
     "/api-docs": {

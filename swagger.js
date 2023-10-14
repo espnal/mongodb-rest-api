@@ -5,8 +5,8 @@ const doc = {
         title:'My API Roguin for Vehicles',
         description:'Vehicles API'
     },
-    host: 'mongodb-rest-api.onrender.com',
-    schemes:['https']
+    host: 'localhost:8080',
+    schemes:['http']
 }; 
 
 const outFile = './swagger.json';
