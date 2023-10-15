@@ -1,1 +1,5 @@
-GET http://localhost:8080/api-docs/
+GET http://localhost:8080/vehiculos
+###
+GET https://mongodb-rest-api.onrender.com/vehiculos/
+###
+GET https://mongodb-rest-api.onrender.com/api-docs
