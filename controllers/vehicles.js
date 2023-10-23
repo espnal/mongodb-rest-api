@@ -10,6 +10,9 @@ const getAll = async (req, res, next) => {
 }
 
 const getSingle = async (req, res, next) => {
+    if(!ObjectId.isValid(req.params.id)){
+        res.status(400).json('Must use a valid contact id to delete a contact')
+    }
     const vehicleId = new ObjectId(req.params.id);
     const result = await mongodb
     .getDb()
@@ -37,8 +40,10 @@ const createVehicle = async (req, res) => {
     }
 };
 const updateVehicle = async (req, res) => {
+    if(!ObjectId.isValid(req.params.id)){
+        res.status(400).json('Must use a valid contact id to delete a contact')
+    }
     const vehicleId = new ObjectId(req.params.id);
-    // be aware of updateOne if you only want to update specific fields
     const vehicle = {
         brand: req.body.brand,
         model: req.body.model,

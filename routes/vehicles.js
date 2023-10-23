@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
+const validation = require('../middleware/validate')
 const vehiclesController = require('../controllers/vehicles');
 
 router.get('/', vehiclesController.getAll);
