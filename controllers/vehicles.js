@@ -41,7 +41,7 @@ const createVehicle = async (req, res) => {
 };
 const updateVehicle = async (req, res) => {
     if(!ObjectId.isValid(req.params.id)){
-        res.status(400).json('Must use a valid contact id to delete a contact')
+        res.status(400).json('Must use a valid contact id to update a contact')
     }
     const vehicleId = new ObjectId(req.params.id);
     const vehicle = {
@@ -65,6 +65,9 @@ const updateVehicle = async (req, res) => {
 };
 
 const deleteVehicle = async (req, res) => {
+        if(!ObjectId.isValid(req.params.id)){
+        res.status(400).json('Must use a valid contact id to delete a contact')
+    }
     const vehicleId = new ObjectId(req.params.id);
     const response = await mongodb.getDb().db().collection('vehiculos').deleteOne({ _id: vehicleId }, true);
     console.log(response);
