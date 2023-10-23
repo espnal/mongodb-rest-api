@@ -7,7 +7,7 @@ const saveVehicles = (req, res, next)=>{
         year: 'required|string',
         type: 'required|string',
         color: 'string',
-        price:'required|integer'
+        price:'required|email'
     }
 
     validator(req.body, validationRule, {}, (err, status) =>{
