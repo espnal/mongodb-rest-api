@@ -11,7 +11,7 @@ const getAll = async (req, res, next) => {
 
 const getSingle = async (req, res, next) => {
     if(!ObjectId.isValid(req.params.id)){
-        res.status(400).json('Must use a valid contact id to delete a contact')
+        res.status(400).json('Must use a valid contact id to get the contact')
     }
     const vehicleId = new ObjectId(req.params.id);
     const result = await mongodb
@@ -29,6 +29,7 @@ const createVehicle = async (req, res) => {
     brand: req.body.brand,
     model: req.body.model,
     year: req.body.year,
+    type:req.body.type,
     color: req.body.color,
     price: req.body.price
     };
@@ -48,6 +49,7 @@ const updateVehicle = async (req, res) => {
         brand: req.body.brand,
         model: req.body.model,
         year: req.body.year,
+        type:req.body.type,
         color: req.body.color,
         price: req.body.price
         };
