@@ -5,8 +5,8 @@ const validation = require('../middleware/validate')
 // validation.saveVehicles
 router.get('/', vehiclesController.getAll);
 router.get('/:id', vehiclesController.getSingle);
-router.post('/', vehiclesController.createVehicle);
-router.put('/:id',  vehiclesController.updateVehicle);
+router.post('/', validation.saveVehicles, vehiclesController.createVehicle);
+router.put('/:id',  validation.saveVehicles, vehiclesController.updateVehicle);
 router.delete('/:id', vehiclesController.deleteVehicle);
 
 module.exports = router;
