@@ -3,6 +3,12 @@ const passwordUtil = require('../util/passwordComplexityCheck');
 
 const create = async(req, res) => {
   try {
+    const password = req.body.password;
+    const passwordCheck = passwordUtil.passwordPass(password);
+    if (passwordCheck.error) {
+      res.status(400).send({ message: passwordCheck.error });
+      return;
+    }
     const newuser = {
       username: req.body.username,
       userlastname: req.body.userlastname,
@@ -17,12 +23,6 @@ const create = async(req, res) => {
       return;
     }
 
-    const password = req.body.password;
-    const passwordCheck = passwordUtil.passwordPass(password);
-    if (passwordCheck.error) {
-      res.status(400).send({ message: passwordCheck.error });
-      return;
-    }
     if (response.acknowledged) {
       res.status(201).json(response);
       } else {
