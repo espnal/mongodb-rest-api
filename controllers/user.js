@@ -13,6 +13,19 @@ const create = async(req, res) => {
       res.status(400).send({ message: passwordCheck.error });
       return;
     }
+    const userDb = mongodb.getDb().db().collection('user');
+    const username = req.body.username;
+    const email = req.body.email;
+
+    const existingUser = await userDb.findOne({ username: username });
+    if (existingUser) {
+      return res.status(409).json({ message: 'Username already in use' });
+    }
+    const existingEmail = await userDb.findOne({ email: email });
+    if (existingEmail) {
+      return res.status(409).json({ message: 'Email already in use' });
+    }
+
     const newuser = {
       username: req.body.username,
       userlastname: req.body.userlastname,
@@ -20,7 +33,7 @@ const create = async(req, res) => {
       password:req.body.password
       };
 
-    const response = await mongodb.getDb().db().collection('user').insertOne(newuser);
+    const response = await userDb.insertOne(newuser);
 
     if (response.acknowledged) {
       res.status(201).json(response);
@@ -38,7 +51,18 @@ const updateUser = async (req, res) => {
       res.status(400).send({ message: 'Content can not be empty!' });
       return;
     }
-    const username = req.params.username;
+    const userDb = mongodb.getDb().db().collection('user');
+    const username = req.body.username;
+    const email = req.body.email;
+
+    const existingUser = await userDb.findOne({ username: username });
+    if (existingUser) {
+      return res.status(409).json({ message: 'Username already in use' });
+    }
+    const existingEmail = await userDb.findOne({ email: email });
+    if (existingEmail) {
+      return res.status(409).json({ message: 'Email already in use' });
+    }
     if (!username) {
       res.status(400).send({ message: 'Invalid Username Supplied' });
       return;
@@ -56,7 +80,7 @@ const updateUser = async (req, res) => {
       email: req.body.email,
     }
 
-    const response = await mongodb.getDb().db().collection('user').replaceOne({ username: username }, newuser);
+    const response = await userDb.replaceOne({ username: username }, newuser);
     if (response.modifiedCount > 0) {
       res.status(204).send();
       } else {
