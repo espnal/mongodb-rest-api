@@ -50,7 +50,7 @@ const updateUser = async (req, res) => {
       return;
     }
     const newuser = {
-      username: req.params.username,
+      username: req.body.username,
       userlastname: req.body.userlastname,
       password: req.body.password,
       email: req.body.email,
