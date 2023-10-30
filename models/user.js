@@ -3,31 +3,15 @@
 //       username: {
 //         type: String
 //       },
-//       password: {
+//     userlastname:{
 //         type: String
-//       },
-//       displayName: {
+//     },
+//       password: {
 //         type: String
 //       },
 //       email: {
 //         type: String
-//       },
-//       phoneNumber: {
-//         type: String
-//       },
-//       currentLocation: {
-//         type: String
-//       },
-//       openToNewOpportunities: {
-//         type: Boolean
-//       },
-//       profileIsPublic: {
-//         type: Boolean
-//       },
-//       theme_name: {
-//         type: String
-//       },
-      
+//       }
 //     });
   
 //     return mongoose.model('users', userSchema);
