@@ -81,10 +81,11 @@ const updateUser = async (req, res) => {
     }
 
     const response = await userDb.replaceOne({ username: username }, newuser);
+    console.log(response);
     if (response.modifiedCount > 0) {
       res.status(204).send();
       } else {
-      res.status(500).json(response.error || 'Some error occurred while updating the vehicle.');
+      res.status(500).json(response.error || 'Some error occurred while updating the user.');
       }
   } catch (err) {
     res.status(500).json(err);
