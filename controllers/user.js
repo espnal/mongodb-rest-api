@@ -52,6 +52,7 @@ const updateUser = async (req, res) => {
       return;
     }
     const userDb = mongodb.getDb().db().collection('user');
+    const lastusername = req.params.username;
     const username = req.body.username;
     const email = req.body.email;
 
@@ -80,7 +81,7 @@ const updateUser = async (req, res) => {
       email: req.body.email,
     }
 
-    const response = await userDb.replaceOne({ username: username }, newuser);
+    const response = await userDb.replaceOne({ username: lastusername }, newuser);
     console.log(response);
     if (response.modifiedCount > 0) {
       res.status(204).send();
@@ -136,7 +137,7 @@ const deleteUser = async (req, res) => {
       res.status(500).json(response.error || 'Some error occurred while deleting the user.');
       }
   } catch (err) {
-    res.status(500).json(err || 'Some error occurred while deleting the contact.');
+    res.status(500).json(err || 'Some error occurred while deleting the user.');
   }
 };
 
