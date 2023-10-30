@@ -178,6 +178,9 @@
     "/user/": {
       "get": {
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -197,6 +200,12 @@
               "type": "object",
               "properties": {
                 "username": {
+                  "example": "any"
+                },
+                "userlastname": {
+                  "example": "any"
+                },
+                "email": {
                   "example": "any"
                 },
                 "password": {
@@ -222,6 +231,9 @@
     "/user/{username}": {
       "get": {
         "description": "",
+        "produces": [
+          "application/json"
+        ],
         "parameters": [
           {
             "name": "username",
@@ -233,6 +245,9 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request"
           },
           "500": {
             "description": "Internal Server Error"
@@ -257,13 +272,10 @@
                 "password": {
                   "example": "any"
                 },
-                "displayName": {
+                "userlastname": {
                   "example": "any"
                 },
-                "info": {
-                  "example": "any"
-                },
-                "profile": {
+                "email": {
                   "example": "any"
                 }
               }
