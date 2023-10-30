@@ -76,7 +76,7 @@ const updateUser = async (req, res) => {
     }
     const response = await mongodb.getDb().db().collection('user')
 
-      response.findOne({ username: username }, function (err, user) {
+      response.replaceOne({ username: username }, function (err, user) {
       user.username = req.params.username;
       user.userlastname = req.body.userlastname;
       user.password = req.body.password;
