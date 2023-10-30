@@ -128,14 +128,12 @@ const deleteUser = async (req, res) => {
       res.status(400).send({ message: 'Invalid Username Supplied' });
       return;
     }
-    const response = await mongodb.getDb().db().collection('user');
-    response.deleteOne({ username: username }, function (err, result) {
-      if (err) {
-        res.status(500).json(err || 'Some error occurred while deleting the contact.');
+    const response = await mongodb.getDb().db().collection('user').deleteOne({ username: username });
+    if (response.deletedCount > 0) {
+      res.status(204).send();
       } else {
-        res.status(204).send(result);
+      res.status(500).json(response.error || 'Some error occurred while deleting the user.');
       }
-    });
   } catch (err) {
     res.status(500).json(err || 'Some error occurred while deleting the contact.');
   }
