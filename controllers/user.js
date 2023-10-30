@@ -3,6 +3,10 @@ const passwordUtil = require('../util/passwordComplexityCheck');
 
 const create = async(req, res) => {
   try {
+    if (!req.body.username || !req.body.userlastname || !req.body.email || !req.body.password) {
+      res.status(400).send({ message: 'Content can not be empty!' });
+      return;
+    }
     const password = req.body.password;
     const passwordCheck = passwordUtil.passwordPass(password);
     if (passwordCheck.error) {
@@ -17,11 +21,6 @@ const create = async(req, res) => {
       };
 
     const response = await mongodb.getDb().db().collection('user').insertOne(newuser);
-    
-    if (!req.body.username || !req.body.userlastname || !req.body.email || !req.body.password) {
-      res.status(400).send({ message: 'Content can not be empty!' });
-      return;
-    }
 
     if (response.acknowledged) {
       res.status(201).json(response);
@@ -32,6 +31,42 @@ const create = async(req, res) => {
     res.status(500).json(err);
   }
 };
+
+const updateUser = async (req, res) => {
+  try {
+    if (!req.body.username || !req.body.userlastname || !req.body.email || !req.body.password) {
+      res.status(400).send({ message: 'Content can not be empty!' });
+      return;
+    }
+    const username = req.params.username;
+    if (!username) {
+      res.status(400).send({ message: 'Invalid Username Supplied' });
+      return;
+    }
+    const password = req.body.password;
+    const passwordCheck = passwordUtil.passwordPass(password);
+    if (passwordCheck.error) {
+      res.status(400).send({ message: passwordCheck.error });
+      return;
+    }
+    const newuser = {
+      username: req.params.username,
+      userlastname: req.body.userlastname,
+      password: req.body.password,
+      email: req.body.email,
+    }
+
+    const response = await mongodb.getDb().db().collection('user').replaceOne({ username: username }, newuser);
+    if (response.modifiedCount > 0) {
+      res.status(204).send();
+      } else {
+      res.status(500).json(response.error || 'Some error occurred while updating the vehicle.');
+      }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
 
 const getAll = async (req, res) => {
   try {
@@ -61,38 +96,6 @@ const getUser = async(req, res) => {
   }
 };
 
-const updateUser = async (req, res) => {
-  try {
-    const username = req.params.username;
-    if (!username) {
-      res.status(400).send({ message: 'Invalid Username Supplied' });
-      return;
-    }
-    const password = req.body.password;
-    const passwordCheck = passwordUtil.passwordPass(password);
-    if (passwordCheck.error) {
-      res.status(400).send({ message: passwordCheck.error });
-      return;
-    }
-    const response = await mongodb.getDb().db().collection('user')
-
-      response.replaceOne({ username: username }, function (err, user) {
-      user.username = req.params.username;
-      user.userlastname = req.body.userlastname;
-      user.password = req.body.password;
-      user.email = req.body.email;
-      user.save(function (err) {
-        if (err) {
-          res.status(500).json(err || 'Some error occurred while updating the contact.');
-        } else {
-          res.status(204).send();
-        }
-      });
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-};
 
 const deleteUser = async (req, res) => {
   try {
