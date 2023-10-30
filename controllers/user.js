@@ -1,5 +1,4 @@
 const mongodb = require('../config/db.config');
-const ObjectId = require('mongodb').ObjectId;
 const passwordUtil = require('../util/passwordComplexityCheck');
 
 const create = async(req, res) => {
@@ -48,11 +47,11 @@ const getAll = async (req, res) => {
 
 const getUser = async(req, res) => {
   try {
-    const name = req.params.name;
-    if(!name){
+    const username = req.params.username;
+    if(!username){
       res.status(400).json('Must use a valid name to get it')
   }
-  const result = await mongodb.getDb().db().collection('user').find({ name: name });
+  const result = await mongodb.getDb().db().collection('user').find({ username: username });
     result.toArray().then((lists) => {
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists[0]);
@@ -79,10 +78,9 @@ const updateUser = async (req, res) => {
 
       response.findOne({ username: username }, function (err, user) {
       user.username = req.params.username;
+      user.userlastname = req.body.userlastname;
       user.password = req.body.password;
-      user.displayName = req.body.displayName;
-      user.info = req.body.info;
-      user.profile = req.body.profile;
+      user.email = req.body.email;
       user.save(function (err) {
         if (err) {
           res.status(500).json(err || 'Some error occurred while updating the contact.');
