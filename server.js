@@ -6,6 +6,8 @@ const app = express();
 const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config();
+const session = require('express-session');
+
 const oauthController = require('./controllers/oauthController');
 
 
@@ -21,7 +23,11 @@ app.use(bodyParser.json())
     res.sendFile(path.join(__dirname, '/static/index.html'));
   });
   
-
+  app.use(session({
+    secret: process.env.GITHUB_CLIENT_ID,
+    resave: false,
+    saveUninitialized: true,
+  }));
   app.get('/oauth', oauthController.redirectToGitHub);
   app.get('/oauth-callback', oauthController.handleGitHubCallback);
 
