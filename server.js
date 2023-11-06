@@ -4,7 +4,7 @@ const mongodb = require('./config/db.config');
 const port = process.env.PORT || 8080;
 const app = express();
 const path = require('path');
-const oauthController = require('controllers/oauthController');
+const oauthController = require('./controllers/oauthController');
 
 app.use(bodyParser.json())
   .use((req, res, next) => {
