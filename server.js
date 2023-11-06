@@ -23,11 +23,11 @@ app.use(bodyParser.json())
     res.sendFile(path.join(__dirname, '/static/index.html'));
   });
   
-  app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-  }));
+  // app.use(session({
+  //   secret: process.env.SESSION_SECRET,
+  //   resave: false,
+  //   saveUninitialized: true,
+  // }));
   app.get('/oauth', oauthController.redirectToGitHub);
   app.get('/oauth-callback', oauthController.handleGitHubCallback);
 
