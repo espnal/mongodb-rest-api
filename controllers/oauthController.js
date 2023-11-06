@@ -26,7 +26,7 @@ const handleGitHubCallback = (req, res) => {
     .post('https://github.com/login/oauth/access_token', body, opts)
     .then((_res) => _res.data.access_token)
     .then((token) => {
-      req.session.accessToken = token;
+      // req.session.accessToken = token;
       console.log('Token almacenado en sesión:', token);
       res.redirect(`https://mongodb-rest-api.onrender.com/api-docs`);
     })
