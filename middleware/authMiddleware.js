@@ -1,5 +1,5 @@
 const isAuthenticated = (req, res, next) => {
-    const token = req.headers.authorization; 
+    const token = req.session.accessToken; 
     if (token) {
       next();
     } else {

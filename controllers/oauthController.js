@@ -25,8 +25,8 @@ const handleGitHubCallback = (req, res) => {
     .post('https://github.com/login/oauth/access_token', body, opts)
     .then((_res) => _res.data.access_token)
     .then((token) => {
-      console.log('My token:', token);
-      res.redirect(`https://mongodb-rest-api.onrender.com/api-docs/?token=${token}`);
+      req.session.accessToken = token;
+      res.redirect(`https://mongodb-rest-api.onrender.com/api-docs`);
     })
     .catch((err) => {
       console.error('Error:', err.message);
