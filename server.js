@@ -6,7 +6,7 @@ const app = express();
 const path = require('path');
 const dotenv = require('dotenv');
 dotenv.config();
-const session = require('express-session');
+// const session = require('express-session');
 
 const oauthController = require('./controllers/oauthController');
 

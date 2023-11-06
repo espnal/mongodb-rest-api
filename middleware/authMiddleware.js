@@ -1,10 +1,11 @@
 const isAuthenticated = (req, res, next) => {
-    const token = req.session.accessToken; 
+    const token = res.locals.accessToken;
     if (token) {
       next();
     } else {
-      res.status(401).json({ error: 'No authorize Access' });
+      res.status(401).json({ error: 'No authorized Access' }); 
     }
   };
   
   module.exports = isAuthenticated;
+  
