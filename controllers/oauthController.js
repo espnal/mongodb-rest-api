@@ -8,6 +8,7 @@ const redirectToGitHub = (req, res) => {
     `https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}`
   );
 };
+// console.log(process.env.GITHUB_CLIENT_ID);
 
 // Lógica para manejar el callback de GitHub.
 const handleGitHubCallback = (req, res) => {
