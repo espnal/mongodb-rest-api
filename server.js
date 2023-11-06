@@ -24,7 +24,7 @@ app.use(bodyParser.json())
   });
   
   app.use(session({
-    secret: process.env.GITHUB_CLIENT_ID,
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
   }));
