@@ -1,9 +1,9 @@
 const isAuthenticated = (req, res, next) => {
-    const token = req.query.token; 
+    const token = req.headers.authorization; 
     if (token) {
       next();
     } else {
-      res.status(401).json({ error: 'Acceso no autorizado' });
+      res.status(401).json({ error: 'No authorize Access' });
     }
   };
   
