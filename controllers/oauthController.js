@@ -10,8 +10,6 @@ const redirectToGitHub = (req, res) => {
   );
   
 };
-// console.log(`https://github.com/login/oauth/authorize?client_id=${process.env.GITHUB_CLIENT_ID}`);
-
 /// Lógica para manejar el callback de GitHub.
 const handleGitHubCallback = (req, res) => {
   const code = req.query.code;
@@ -30,7 +28,7 @@ const handleGitHubCallback = (req, res) => {
       res.locals.accessToken = token;
       console.log('Token almacenado en res.locals:', token);
       console.log('TODO 55');
-      res.redirect(`https://mongodb-rest-api.onrender.com/api-docs`);
+      res.redirect(`https://mongodb-rest-api.onrender.com/api-docs/?token=${token}`);
     })
     .catch((err) => {
       console.error('Error:', err.message);
