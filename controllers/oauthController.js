@@ -28,15 +28,14 @@ const handleGitHubCallback = (req, res) => {
     .then((token) => {
 
       res.locals.accessToken = token;
-
+      console.log('Token almacenado en res.locals:', token);
+      console.log('TODO 55');
       res.redirect(`https://mongodb-rest-api.onrender.com/api-docs`);
     })
     .catch((err) => {
       console.error('Error:', err.message);
       res.status(500).json({ error: err.message });
     });
-    console.log('Token almacenado en res.locals:', token);
-    console.log('TODO 55');
 };
 
 
